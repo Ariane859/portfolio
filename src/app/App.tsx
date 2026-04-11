@@ -65,7 +65,7 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
       <div className="max-w-[1280px] mx-auto px-4 md:px-20 h-full flex items-center justify-between">
         {/* Logo */}
         <div className="flex flex-col">
-          <div className="font-[800] text-[22px] text-[#C49A3C] font-['Syne']">[YN]</div>
+          <img src="/Images/ChatGPT Image 11 avr. 2026, 23_16_10.svg" alt="Logo" className="h-[40px] w-auto" />
           <div className="font-['DM_Mono'] text-[12px] text-[#8C8880]">Fullstack Developer</div>
         </div>
 

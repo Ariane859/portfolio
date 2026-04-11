@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(cmd.exe /c '\"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" auth status')",
-      "Bash(cmd.exe /c '\"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" auth status 2>&1 && echo CONNECTE')"
+      "Bash(cmd.exe /c '\"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" auth status 2>&1 && echo CONNECTE')",
+      "Bash(cmd.exe /c '\"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" run view 1 --repo Ariane859/portfolio --log-failed 2>&1')",
+      "Bash(\"/c/Program Files/GitHub CLI/gh.exe\" run list --repo Ariane859/portfolio)",
+      "Bash(\"/c/Program Files/GitHub CLI/gh.exe\" run view 24287206447 --repo Ariane859/portfolio --log-failed)"
     ]
   }
 }
