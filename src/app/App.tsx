@@ -145,7 +145,7 @@ function HeroSection() {
         FULLSTACK
       </div>
 
-      <div className="max-w-[1280px] mx-auto w-full grid md:grid-cols-[55%_45%] gap-12 relative z-10">
+      <div className="max-w-[1280px] mx-auto w-full grid md:grid-cols-[55%_45%] gap-8 md:gap-12 relative z-10">
         {/* Left Column */}
         <div className="flex flex-col justify-center">
           <motion.div
@@ -212,15 +212,15 @@ function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Right Column — hidden on mobile */}
+        {/* Right Column */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.6 }}
-          className="hidden md:flex flex-col gap-6 justify-center"
+          className="flex flex-col gap-6 justify-center"
         >
-          <div className="bg-[#161616] border border-[#2A2A2A] rounded-lg p-4 md:p-8">
-            <pre className="font-['DM_Mono'] text-[12px] md:text-[14px] overflow-x-auto">
+          <div className="bg-[#161616] border border-[#2A2A2A] rounded-lg p-4 md:p-8 w-full overflow-hidden">
+            <pre className="font-['DM_Mono'] text-[11px] sm:text-[13px] md:text-[14px] overflow-x-auto leading-relaxed">
               <code>
                 <span className="text-[#C49A3C]">const</span> <span className="text-[#F2EDE4]">buildFullstack</span> <span className="text-[#8C8880]">=</span> <span className="text-[#C49A3C]">async</span> <span className="text-[#8C8880]">{'() => {'}</span>{'\n'}
                 {'  '}<span className="text-[#C49A3C]">return</span> <span className="text-[#8C8880]">{'{'}</span>{'\n'}
