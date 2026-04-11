@@ -66,7 +66,7 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
         {/* Logo */}
         <div className="flex flex-col">
           <img src={`${import.meta.env.BASE_URL}Images/logo.svg`} alt="Logo" className="h-[96px] w-auto" />
-          <div className="font-['DM_Mono'] text-[12px] text-[#8C8880] mt-[-18px]">Fullstack Developer</div>
+          <div className="font-['DM_Mono'] text-[12px] text-[#8C8880] mt-[-24px]">Fullstack Developer</div>
         </div>
 
         {/* Desktop Nav Links */}
@@ -796,8 +796,8 @@ function Footer() {
       <div className="max-w-[1280px] mx-auto grid md:grid-cols-3 gap-8 md:gap-0">
         {/* Logo */}
         <div>
-          <img src={`${import.meta.env.BASE_URL}Images/logo.svg`} alt="Logo" className="h-[48px] w-auto mb-2" />
-          <div className="font-['DM_Mono'] text-[12px] text-[#8C8880]">Fullstack Developer</div>
+          <img src={`${import.meta.env.BASE_URL}Images/logo.svg`} alt="Logo" className="h-[48px] w-auto" />
+          <div className="font-['DM_Mono'] text-[12px] text-[#8C8880] mt-[-8px]">Fullstack Developer</div>
         </div>
 
         {/* Nav Links */}
