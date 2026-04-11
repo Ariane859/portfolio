@@ -60,13 +60,13 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? 'bg-[#0E0E0E]/92 backdrop-blur-xl border-b border-[#2A2A2A]' : 'bg-transparent'
       }`}
-      style={{ height: '80px' }}
+      style={{ height: '104px' }}
     >
       <div className="max-w-[1280px] mx-auto px-4 md:px-20 h-full flex items-center justify-between">
         {/* Logo */}
         <div className="flex flex-col">
-          <img src={`${import.meta.env.BASE_URL}Images/logo.svg`} alt="Logo" className="h-[72px] w-auto" />
-          <div className="font-['DM_Mono'] text-[12px] text-[#8C8880]">Fullstack Developer</div>
+          <img src={`${import.meta.env.BASE_URL}Images/logo.svg`} alt="Logo" className="h-[96px] w-auto" />
+          <div className="font-['DM_Mono'] text-[12px] text-[#8C8880] mt-[-4px]">Fullstack Developer</div>
         </div>
 
         {/* Desktop Nav Links */}
@@ -109,8 +109,8 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="md:hidden absolute top-[80px] left-0 right-0 bg-[#0E0E0E] border-b border-[#2A2A2A] p-8 pb-12"
-          style={{ minHeight: 'calc(100vh - 80px)' }}
+          className="md:hidden absolute top-[104px] left-0 right-0 bg-[#0E0E0E] border-b border-[#2A2A2A] p-8 pb-12"
+          style={{ minHeight: 'calc(100vh - 104px)' }}
         >
           <div className="flex flex-col gap-6">
             {[
@@ -139,7 +139,7 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
 
 function HeroSection() {
   return (
-    <section className="min-h-screen relative flex items-center px-6 md:px-20 pt-20" id="accueil">
+    <section className="min-h-screen relative flex items-center px-6 md:px-20 pt-28" id="accueil">
       {/* Background decorative text */}
       <div className="absolute top-1/2 right-0 -translate-y-1/2 font-['Syne'] font-[800] text-[80px] sm:text-[130px] lg:text-[200px] text-[#151515] select-none pointer-events-none overflow-hidden whitespace-nowrap" style={{ transform: 'translateY(-50%) rotate(-3deg)' }}>
         FULLSTACK
@@ -796,7 +796,7 @@ function Footer() {
       <div className="max-w-[1280px] mx-auto grid md:grid-cols-3 gap-8 md:gap-0">
         {/* Logo */}
         <div>
-          <div className="font-['Syne'] font-[800] text-[22px] text-[#C49A3C] mb-2">[YN]</div>
+          <img src={`${import.meta.env.BASE_URL}Images/logo.svg`} alt="Logo" className="h-[48px] w-auto mb-2" />
           <div className="font-['DM_Mono'] text-[12px] text-[#8C8880]">Fullstack Developer</div>
         </div>
 
