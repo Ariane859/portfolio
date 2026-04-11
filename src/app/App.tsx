@@ -66,7 +66,7 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
         {/* Logo */}
         <div className="flex flex-col">
           <img src={`${import.meta.env.BASE_URL}Images/logo.svg`} alt="Logo" className="h-[96px] w-auto" />
-          <div className="font-['DM_Mono'] text-[12px] text-[#8C8880] mt-[-4px]">Fullstack Developer</div>
+          <div className="font-['DM_Mono'] text-[12px] text-[#8C8880] mt-[-18px]">Fullstack Developer</div>
         </div>
 
         {/* Desktop Nav Links */}
