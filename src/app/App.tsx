@@ -212,15 +212,15 @@ function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Right Column */}
+        {/* Right Column — hidden on mobile */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.6 }}
-          className="flex flex-col gap-6 justify-center"
+          className="hidden md:flex flex-col gap-6 justify-center"
         >
-          <div className="bg-[#161616] border border-[#2A2A2A] rounded-lg p-8">
-            <pre className="font-['DM_Mono'] text-[14px] overflow-x-auto">
+          <div className="bg-[#161616] border border-[#2A2A2A] rounded-lg p-4 md:p-8">
+            <pre className="font-['DM_Mono'] text-[12px] md:text-[14px] overflow-x-auto">
               <code>
                 <span className="text-[#C49A3C]">const</span> <span className="text-[#F2EDE4]">buildFullstack</span> <span className="text-[#8C8880]">=</span> <span className="text-[#C49A3C]">async</span> <span className="text-[#8C8880]">{'() => {'}</span>{'\n'}
                 {'  '}<span className="text-[#C49A3C]">return</span> <span className="text-[#8C8880]">{'{'}</span>{'\n'}
