@@ -70,7 +70,7 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
         </div>
 
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-8 self-center mt-2">
           {[
             { label: 'Accueil', href: 'accueil' },
             { label: 'Stack', href: 'stack' },
@@ -91,7 +91,7 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
         </div>
 
         {/* CTA Button */}
-        <button className="hidden md:block px-6 py-2 border-[1px] border-[#C49A3C] text-[#C49A3C] hover:bg-[#C49A3C] hover:text-[#0E0E0E] transition-all duration-200 font-['DM_Mono'] text-[13px]">
+        <button className="hidden md:block px-6 py-2 border-[1px] border-[#C49A3C] text-[#C49A3C] hover:bg-[#C49A3C] hover:text-[#0E0E0E] transition-all duration-200 font-['DM_Mono'] text-[13px] self-center mt-2">
           Discutons
         </button>
 
