@@ -11,7 +11,7 @@ export default function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 5);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -66,7 +66,7 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
         {/* Logo */}
         <div className="flex flex-col">
           <img src={`${import.meta.env.BASE_URL}Images/logo.svg`} alt="Logo" className="h-[96px] w-auto" />
-          <div className="font-['DM_Mono'] text-[12px] text-[#8C8880] mt-[-24px]">Fullstack Developer</div>
+          <div className={`font-['DM_Mono'] text-[12px] text-[#8C8880] overflow-hidden transition-all duration-200 ${scrolled ? 'max-h-0 opacity-0 mt-0' : 'max-h-[20px] opacity-100 mt-[-24px]'}`}>Fullstack Developer</div>
         </div>
 
         {/* Desktop Nav Links */}
@@ -723,13 +723,17 @@ function AboutSection() {
 
             <div className="flex flex-wrap gap-4">
               <a
-                href="#"
+                href="https://github.com/Ariane859"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 border border-[#C49A3C] text-[#C49A3C] hover:bg-[#C49A3C] hover:text-[#0E0E0E] transition-all font-['DM_Mono'] text-[13px]"
               >
                 <Github size={16} /> GitHub
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/ariane-laura-d-almeida-9976bb207"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 border border-[#C49A3C] text-[#C49A3C] hover:bg-[#C49A3C] hover:text-[#0E0E0E] transition-all font-['DM_Mono'] text-[13px]"
               >
                 <Linkedin size={16} /> LinkedIn
@@ -802,13 +806,20 @@ function Footer() {
 
         {/* Nav Links */}
         <div className="flex flex-wrap gap-4 md:gap-6 justify-start md:justify-center items-center">
-          {['Accueil', 'Stack', 'Projets', 'Contact'].map((item) => (
+          {[
+            { label: 'Accueil', href: 'accueil' },
+            { label: 'Stack', href: 'stack' },
+            { label: 'Projets', href: 'projets' },
+            { label: 'Services', href: 'services' },
+            { label: 'À Propos', href: 'about' },
+            { label: 'Contact', href: 'contact' },
+          ].map(({ label, href }) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={href}
+              href={`#${href}`}
               className="font-['DM_Mono'] text-[12px] text-[#8C8880] hover:text-[#C49A3C] transition-colors"
             >
-              {item}
+              {label}
             </a>
           ))}
         </div>
@@ -816,10 +827,10 @@ function Footer() {
         {/* Social & Copyright */}
         <div className="flex flex-col md:items-end gap-3">
           <div className="flex gap-4">
-            <a href="#" className="text-[#8C8880] hover:text-[#C49A3C] transition-colors">
+            <a href="https://github.com/Ariane859" target="_blank" rel="noopener noreferrer" className="text-[#8C8880] hover:text-[#C49A3C] transition-colors">
               <Github size={18} />
             </a>
-            <a href="#" className="text-[#8C8880] hover:text-[#C49A3C] transition-colors">
+            <a href="https://www.linkedin.com/in/ariane-laura-d-almeida-9976bb207" target="_blank" rel="noopener noreferrer" className="text-[#8C8880] hover:text-[#C49A3C] transition-colors">
               <Linkedin size={18} />
             </a>
           </div>
