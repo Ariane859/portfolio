@@ -60,7 +60,7 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? 'bg-[#0E0E0E]/92 backdrop-blur-xl border-b border-[#2A2A2A]' : 'bg-transparent'
       }`}
-      style={{ height: '104px' }}
+      style={{ height: scrolled ? '96px' : '104px', transition: 'height 0.3s ease' }}
     >
       <div className="max-w-[1280px] mx-auto px-4 md:px-20 h-full flex items-center justify-between">
         {/* Logo */}
@@ -70,7 +70,7 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
         </div>
 
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-8 self-center mt-2">
+        <div className="hidden md:flex items-center gap-8 self-center">
           {[
             { label: 'Accueil', href: 'accueil' },
             { label: 'Stack', href: 'stack' },
@@ -91,7 +91,7 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
         </div>
 
         {/* CTA Button */}
-        <button className="hidden md:block px-6 py-2 border-[1px] border-[#C49A3C] text-[#C49A3C] hover:bg-[#C49A3C] hover:text-[#0E0E0E] transition-all duration-200 font-['DM_Mono'] text-[13px] self-center mt-2">
+        <button className="hidden md:block px-6 py-2 border-[1px] border-[#C49A3C] text-[#C49A3C] hover:bg-[#C49A3C] hover:text-[#0E0E0E] transition-all duration-200 font-['DM_Mono'] text-[13px] self-center">
           Discutons
         </button>
 
