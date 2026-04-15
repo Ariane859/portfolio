@@ -109,8 +109,8 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="md:hidden absolute top-[104px] left-0 right-0 bg-[#0E0E0E] border-b border-[#2A2A2A] p-8 pb-12"
-          style={{ minHeight: 'calc(100vh - 104px)' }}
+          className="md:hidden absolute left-0 right-0 bg-[#0E0E0E] border-b border-[#2A2A2A] p-8 pb-12"
+          style={{ top: scrolled ? '64px' : '104px', minHeight: scrolled ? 'calc(100vh - 64px)' : 'calc(100vh - 104px)' }}
         >
           <div className="flex flex-col gap-6">
             {[
