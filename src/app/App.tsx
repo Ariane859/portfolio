@@ -60,12 +60,12 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? 'bg-[#0E0E0E]/92 backdrop-blur-xl border-b border-[#2A2A2A]' : 'bg-transparent'
       }`}
-      style={{ height: scrolled ? '64px' : '104px', transition: 'height 0.3s ease' }}
+      style={{ height: scrolled ? '64px' : '118px', transition: 'height 0.3s ease' }}
     >
       <div className="max-w-[1280px] mx-auto px-4 md:px-20 h-full flex items-center justify-between">
         {/* Logo */}
         <div className="flex flex-col">
-          <img src={`${import.meta.env.BASE_URL}Images/logo.svg`} alt="Logo" className="w-auto" style={{ height: scrolled ? '44px' : '96px', transition: 'height 0.3s ease' }} />
+          <img src={`${import.meta.env.BASE_URL}Images/logo.svg`} alt="Logo" className="w-auto" style={{ height: scrolled ? '44px' : '108px', transition: 'height 0.3s ease' }} />
           <div className={`font-['DM_Mono'] text-[12px] text-[#8C8880] overflow-hidden transition-all duration-200 ${scrolled ? 'max-h-0 opacity-0 mt-0' : 'max-h-[20px] opacity-100 mt-[-24px]'}`}>Fullstack Developer</div>
         </div>
 
@@ -110,7 +110,7 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="md:hidden absolute left-0 right-0 bg-[#0E0E0E] border-b border-[#2A2A2A] p-8 pb-12"
-          style={{ top: scrolled ? '64px' : '104px', minHeight: scrolled ? 'calc(100vh - 64px)' : 'calc(100vh - 104px)' }}
+          style={{ top: scrolled ? '64px' : '118px', minHeight: scrolled ? 'calc(100vh - 64px)' : 'calc(100vh - 118px)' }}
         >
           <div className="flex flex-col gap-6">
             {[
@@ -139,7 +139,7 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
 
 function HeroSection() {
   return (
-    <section className="min-h-screen relative flex items-center px-6 md:px-20 pt-28" id="accueil">
+    <section className="min-h-screen relative flex items-center px-6 md:px-20 pt-[118px]" id="accueil">
       {/* Background decorative text */}
       <div className="absolute top-1/2 right-0 -translate-y-1/2 font-['Syne'] font-[800] text-[80px] sm:text-[130px] lg:text-[200px] text-[#151515] select-none pointer-events-none overflow-hidden whitespace-nowrap" style={{ transform: 'translateY(-50%) rotate(-3deg)' }}>
         FULLSTACK
