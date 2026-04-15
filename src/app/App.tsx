@@ -60,12 +60,12 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? 'bg-[#0E0E0E]/92 backdrop-blur-xl border-b border-[#2A2A2A]' : 'bg-transparent'
       }`}
-      style={{ height: scrolled ? '96px' : '104px', transition: 'height 0.3s ease' }}
+      style={{ height: scrolled ? '64px' : '104px', transition: 'height 0.3s ease' }}
     >
       <div className="max-w-[1280px] mx-auto px-4 md:px-20 h-full flex items-center justify-between">
         {/* Logo */}
         <div className="flex flex-col">
-          <img src={`${import.meta.env.BASE_URL}Images/logo.svg`} alt="Logo" className="h-[96px] w-auto" />
+          <img src={`${import.meta.env.BASE_URL}Images/logo.svg`} alt="Logo" className="w-auto" style={{ height: scrolled ? '44px' : '96px', transition: 'height 0.3s ease' }} />
           <div className={`font-['DM_Mono'] text-[12px] text-[#8C8880] overflow-hidden transition-all duration-200 ${scrolled ? 'max-h-0 opacity-0 mt-0' : 'max-h-[20px] opacity-100 mt-[-24px]'}`}>Fullstack Developer</div>
         </div>
 
