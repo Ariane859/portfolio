@@ -282,7 +282,7 @@ function StackSection() {
   const techMarquee = ['React', 'Node.js', 'TypeScript', 'PostgreSQL', 'Docker', 'Next.js', 'Python', 'Tailwind', 'GraphQL', 'MongoDB'];
 
   return (
-    <section ref={ref} className="py-16 md:py-32 px-6 md:px-20" id="stack">
+    <section ref={ref} className="py-10 md:py-20 px-6 md:px-20" id="stack">
       <div className="max-w-[1280px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -382,7 +382,7 @@ function ServicesSection() {
   ];
 
   return (
-    <section ref={ref} className="py-16 md:py-32 px-6 md:px-20" id="services">
+    <section ref={ref} className="py-10 md:py-20 px-6 md:px-20" id="services">
       <div className="max-w-[1280px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -477,7 +477,7 @@ function ProjectsSection({ activeFilter, setActiveFilter }: any) {
   ];
 
   return (
-    <section ref={ref} className="py-16 md:py-32 px-6 md:px-20" id="projets">
+    <section ref={ref} className="py-10 md:py-20 px-6 md:px-20" id="projets">
       <div className="max-w-[1280px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -601,7 +601,7 @@ function ProcessSection() {
   ];
 
   return (
-    <section ref={ref} className="py-16 md:py-32 px-6 md:px-20">
+    <section ref={ref} className="py-10 md:py-20 px-6 md:px-20">
       <div className="max-w-[1280px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -658,7 +658,7 @@ function AboutSection() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <section ref={ref} className="py-16 md:py-32 px-6 md:px-20" id="about">
+    <section ref={ref} className="py-10 md:py-20 px-6 md:px-20" id="about">
       <div className="max-w-[1280px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -757,7 +757,7 @@ function ContactCTA() {
   const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   return (
-    <section ref={ref} className="bg-[#161616] border-t border-[#2A2A2A] py-16 md:py-32 px-6 md:px-20" id="contact">
+    <section ref={ref} className="bg-[#161616] border-t border-[#2A2A2A] py-10 md:py-20 px-6 md:px-20" id="contact">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
