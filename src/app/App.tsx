@@ -66,7 +66,7 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
         {/* Logo */}
         <div className="flex flex-col">
           <img src={`${import.meta.env.BASE_URL}Images/logo.svg`} alt="Logo" className="w-auto" style={{ height: scrolled ? '75px' : '108px', transition: 'height 0.3s ease' }} />
-          <div className={`font-['DM_Mono'] text-[12px] text-[#8C8880] overflow-hidden transition-all duration-200 ${scrolled ? 'max-h-0 opacity-0 mt-0' : 'max-h-[20px] opacity-100 mt-[-24px]'}`}>Fullstack Developer</div>
+          <div className={`font-['DM_Mono'] text-[12px] text-[#8C8880] mt-[-24px] transition-opacity duration-200 ${scrolled ? 'opacity-0' : 'opacity-100'}`}>Fullstack Developer</div>
         </div>
 
         {/* Desktop Nav Links */}
