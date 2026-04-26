@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { motion, useInView } from 'motion/react';
+import { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 import {
   Menu, X, ArrowRight, Github, Linkedin, Download, Code2
 } from 'lucide-react';
@@ -259,9 +259,6 @@ function StatItem({ number, label }: { number: string; label: string }) {
 }
 
 function StackSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-
   const skills = {
     frontend: [
       { name: 'React / Next.js', proficiency: 95 },
@@ -282,20 +279,21 @@ function StackSection() {
   const techMarquee = ['React', 'Node.js', 'TypeScript', 'PostgreSQL', 'Docker', 'Next.js', 'Python', 'Tailwind', 'GraphQL', 'MongoDB'];
 
   return (
-    <section ref={ref} className="pt-12 md:pt-16 pb-6 md:pb-10 px-6 md:px-20" id="stack">
+    <section className="pt-12 md:pt-16 pb-6 md:pb-10 px-6 md:px-20" id="stack">
       <div className="max-w-[1280px] mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <SectionLabel number="02" title="Stack" />
           <h2 className="mb-16">L'outillage qui fait tourner mes projets.</h2>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-16 mb-16">
-          <SkillColumn title="FRONTEND" skills={skills.frontend} delay={0.2} isInView={isInView} />
-          <SkillColumn title="BACKEND & INFRA" skills={skills.backend} delay={0.4} isInView={isInView} />
+          <SkillColumn title="FRONTEND" skills={skills.frontend} delay={0.1} />
+          <SkillColumn title="BACKEND & INFRA" skills={skills.backend} delay={0.2} />
         </div>
 
         {/* Marquee */}
@@ -324,12 +322,13 @@ function StackSection() {
   );
 }
 
-function SkillColumn({ title, skills, delay, isInView }: any) {
+function SkillColumn({ title, skills, delay }: any) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       <h3 className="font-['DM_Mono'] text-[14px] uppercase tracking-[0.08em] text-[#C49A3C] mb-8">
         {title}
@@ -343,7 +342,8 @@ function SkillColumn({ title, skills, delay, isInView }: any) {
               <div className="h-[2px] bg-[#2A2A2A] relative overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
-                  animate={isInView ? { width: `${skill.proficiency}%` } : {}}
+                  whileInView={{ width: `${skill.proficiency}%` }}
+                  viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 1, delay: delay + i * 0.1 }}
                   className="h-full bg-[#C49A3C]"
                 />
@@ -357,9 +357,6 @@ function SkillColumn({ title, skills, delay, isInView }: any) {
 }
 
 function ServicesSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-
   const services = [
     {
       number: '01',
@@ -382,12 +379,13 @@ function ServicesSection() {
   ];
 
   return (
-    <section ref={ref} className="py-6 md:py-10 px-6 md:px-20" id="services">
+    <section className="py-6 md:py-10 px-6 md:px-20" id="services">
       <div className="max-w-[1280px] mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <SectionLabel number="03" title="Services" />
           <h2 className="mb-16">Ce que je peux construire pour vous.</h2>
@@ -395,7 +393,7 @@ function ServicesSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, i) => (
-            <ServiceCard key={service.number} service={service} delay={i * 0.2} isInView={isInView} />
+            <ServiceCard key={service.number} service={service} delay={i * 0.15} />
           ))}
         </div>
       </div>
@@ -403,14 +401,15 @@ function ServicesSection() {
   );
 }
 
-function ServiceCard({ service, delay, isInView }: any) {
+function ServiceCard({ service, delay }: any) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="bg-[#161616] border border-[#2A2A2A] hover:border-[#3A3A3A] rounded-lg p-8 relative transition-all duration-300 group"
@@ -450,8 +449,6 @@ function ServiceCard({ service, delay, isInView }: any) {
 }
 
 function ProjectsSection({ activeFilter, setActiveFilter }: any) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const filters = ['Tous', 'Frontend', 'Fullstack', 'API'];
 
@@ -477,12 +474,13 @@ function ProjectsSection({ activeFilter, setActiveFilter }: any) {
   ];
 
   return (
-    <section ref={ref} className="py-6 md:py-10 px-6 md:px-20" id="projets">
+    <section className="py-6 md:py-10 px-6 md:px-20" id="projets">
       <div className="max-w-[1280px] mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <SectionLabel number="04" title="Projets" />
           <h2 className="mb-12">Des produits qui fonctionnent en production.</h2>
@@ -508,7 +506,7 @@ function ProjectsSection({ activeFilter, setActiveFilter }: any) {
         {/* Project Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, i) => (
-            <ProjectCard key={project.title} project={project} delay={i * 0.2} isInView={isInView} />
+            <ProjectCard key={project.title} project={project} delay={i * 0.15} />
           ))}
         </div>
       </div>
@@ -516,14 +514,15 @@ function ProjectsSection({ activeFilter, setActiveFilter }: any) {
   );
 }
 
-function ProjectCard({ project, delay, isInView }: any) {
+function ProjectCard({ project, delay }: any) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={`bg-[#161616] border border-[#2A2A2A] hover:border-[#3A3A3A] rounded-lg overflow-hidden transition-all duration-300 ${
@@ -574,8 +573,6 @@ function ProjectCard({ project, delay, isInView }: any) {
 }
 
 function ProcessSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   const steps = [
     {
@@ -601,12 +598,13 @@ function ProcessSection() {
   ];
 
   return (
-    <section ref={ref} className="py-6 md:py-10 px-6 md:px-20">
+    <section className="py-6 md:py-10 px-6 md:px-20">
       <div className="max-w-[1280px] mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <SectionLabel number="05" title="Process" />
           <h2 className="mb-16">Comment je travaille.</h2>
@@ -617,14 +615,14 @@ function ProcessSection() {
           <div className="absolute top-6 left-0 right-0 h-[2px] border-t-2 border-dashed border-[#C49A3C] opacity-30" />
 
           {steps.map((step, i) => (
-            <ProcessStep key={step.number} step={step} delay={i * 0.2} isInView={isInView} />
+            <ProcessStep key={step.number} step={step} delay={i * 0.15} />
           ))}
         </div>
 
         {/* Mobile: Vertical layout */}
         <div className="md:hidden space-y-8">
           {steps.map((step, i) => (
-            <ProcessStep key={step.number} step={step} delay={i * 0.2} isInView={isInView} />
+            <ProcessStep key={step.number} step={step} delay={i * 0.15} />
           ))}
         </div>
       </div>
@@ -632,12 +630,13 @@ function ProcessSection() {
   );
 }
 
-function ProcessStep({ step, delay, isInView }: any) {
+function ProcessStep({ step, delay }: any) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="flex-1 relative"
     >
       <div className="font-['Syne'] font-[800] text-[40px] text-[#C49A3C] mb-4">
@@ -654,16 +653,14 @@ function ProcessStep({ step, delay, isInView }: any) {
 }
 
 function AboutSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-
   return (
-    <section ref={ref} className="py-6 md:py-10 px-6 md:px-20" id="about">
+    <section className="py-6 md:py-10 px-6 md:px-20" id="about">
       <div className="max-w-[1280px] mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <SectionLabel number="06" title="À Propos" />
         </motion.div>
@@ -671,9 +668,10 @@ function AboutSection() {
         <div className="grid md:grid-cols-[40%_60%] gap-12">
           {/* Left: Image */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="relative"
           >
             <div className="aspect-[4/3] md:aspect-[3/4] bg-[#1F1F1F] border border-[#C49A3C] rounded-lg relative overflow-hidden">
@@ -688,9 +686,10 @@ function AboutSection() {
 
           {/* Right: Content */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="flex flex-col justify-center"
           >
             <div className="font-['DM_Mono'] text-[12px] uppercase tracking-[0.08em] text-[#C49A3C] mb-4">
@@ -753,15 +752,13 @@ function AboutSection() {
 }
 
 function ContactCTA() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
-
   return (
-    <section ref={ref} className="bg-[#161616] border-t border-[#2A2A2A] py-6 md:py-10 px-6 md:px-20" id="contact">
+    <section className="bg-[#161616] border-t border-[#2A2A2A] py-6 md:py-10 px-6 md:px-20" id="contact">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6 }}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="max-w-[680px] mx-auto text-center"
       >
         <h2 className="font-['Syne'] font-[800] text-[40px] md:text-[56px] lg:text-[64px] mb-6" style={{ lineHeight: 1.1 }}>
