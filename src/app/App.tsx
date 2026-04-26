@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'motion/react';
 import {
   Menu, X, ArrowRight, Github, Linkedin, Download, Code2
 } from 'lucide-react';
@@ -18,7 +18,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0E0E0E] text-[#F2EDE4] relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#0E0E0E] text-[#F2EDE4] relative" style={{ overflowX: 'clip' }}>
       {/* Subtle grain texture overlay */}
       <div className="fixed inset-0 opacity-[0.03] pointer-events-none z-50"
            style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
@@ -259,6 +259,8 @@ function StatItem({ number, label }: { number: string; label: string }) {
 }
 
 function StackSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
   const skills = {
     frontend: [
       { name: 'React / Next.js', proficiency: 95 },
@@ -279,12 +281,11 @@ function StackSection() {
   const techMarquee = ['React', 'Node.js', 'TypeScript', 'PostgreSQL', 'Docker', 'Next.js', 'Python', 'Tailwind', 'GraphQL', 'MongoDB'];
 
   return (
-    <section className="pt-12 md:pt-16 pb-6 md:pb-10 px-6 md:px-20" id="stack">
+    <section ref={ref} className="pt-12 md:pt-16 pb-6 md:pb-10 px-6 md:px-20" id="stack">
       <div className="max-w-[1280px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <SectionLabel number="02" title="Stack" />
@@ -292,8 +293,8 @@ function StackSection() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-16 mb-16">
-          <SkillColumn title="FRONTEND" skills={skills.frontend} delay={0.1} />
-          <SkillColumn title="BACKEND & INFRA" skills={skills.backend} delay={0.2} />
+          <SkillColumn title="FRONTEND" skills={skills.frontend} delay={0.1} isInView={isInView} />
+          <SkillColumn title="BACKEND & INFRA" skills={skills.backend} delay={0.2} isInView={isInView} />
         </div>
 
         {/* Marquee */}
@@ -322,12 +323,11 @@ function StackSection() {
   );
 }
 
-function SkillColumn({ title, skills, delay }: any) {
+function SkillColumn({ title, skills, delay, isInView }: any) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
       transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       <h3 className="font-['DM_Mono'] text-[14px] uppercase tracking-[0.08em] text-[#C49A3C] mb-8">
@@ -342,8 +342,7 @@ function SkillColumn({ title, skills, delay }: any) {
               <div className="h-[2px] bg-[#2A2A2A] relative overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.proficiency}%` }}
-                  viewport={{ once: true, amount: 0.5 }}
+                  animate={isInView ? { width: `${skill.proficiency}%` } : { width: 0 }}
                   transition={{ duration: 1, delay: delay + i * 0.1 }}
                   className="h-full bg-[#C49A3C]"
                 />
@@ -357,6 +356,8 @@ function SkillColumn({ title, skills, delay }: any) {
 }
 
 function ServicesSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
   const services = [
     {
       number: '01',
@@ -379,12 +380,11 @@ function ServicesSection() {
   ];
 
   return (
-    <section className="py-6 md:py-10 px-6 md:px-20" id="services">
+    <section ref={ref} className="py-6 md:py-10 px-6 md:px-20" id="services">
       <div className="max-w-[1280px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <SectionLabel number="03" title="Services" />
@@ -393,7 +393,7 @@ function ServicesSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, i) => (
-            <ServiceCard key={service.number} service={service} delay={i * 0.15} />
+            <ServiceCard key={service.number} service={service} delay={i * 0.15} isInView={isInView} />
           ))}
         </div>
       </div>
@@ -401,14 +401,13 @@ function ServicesSection() {
   );
 }
 
-function ServiceCard({ service, delay }: any) {
+function ServiceCard({ service, delay, isInView }: any) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
       transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -449,6 +448,8 @@ function ServiceCard({ service, delay }: any) {
 }
 
 function ProjectsSection({ activeFilter, setActiveFilter }: any) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   const filters = ['Tous', 'Frontend', 'Fullstack', 'API'];
 
@@ -474,12 +475,11 @@ function ProjectsSection({ activeFilter, setActiveFilter }: any) {
   ];
 
   return (
-    <section className="py-6 md:py-10 px-6 md:px-20" id="projets">
+    <section ref={ref} className="py-6 md:py-10 px-6 md:px-20" id="projets">
       <div className="max-w-[1280px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <SectionLabel number="04" title="Projets" />
@@ -506,7 +506,7 @@ function ProjectsSection({ activeFilter, setActiveFilter }: any) {
         {/* Project Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, i) => (
-            <ProjectCard key={project.title} project={project} delay={i * 0.15} />
+            <ProjectCard key={project.title} project={project} delay={i * 0.15} isInView={isInView} />
           ))}
         </div>
       </div>
@@ -514,14 +514,13 @@ function ProjectsSection({ activeFilter, setActiveFilter }: any) {
   );
 }
 
-function ProjectCard({ project, delay }: any) {
+function ProjectCard({ project, delay, isInView }: any) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
       transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -573,6 +572,8 @@ function ProjectCard({ project, delay }: any) {
 }
 
 function ProcessSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   const steps = [
     {
@@ -598,12 +599,11 @@ function ProcessSection() {
   ];
 
   return (
-    <section className="py-6 md:py-10 px-6 md:px-20">
+    <section ref={ref} className="py-6 md:py-10 px-6 md:px-20">
       <div className="max-w-[1280px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <SectionLabel number="05" title="Process" />
@@ -615,14 +615,14 @@ function ProcessSection() {
           <div className="absolute top-6 left-0 right-0 h-[2px] border-t-2 border-dashed border-[#C49A3C] opacity-30" />
 
           {steps.map((step, i) => (
-            <ProcessStep key={step.number} step={step} delay={i * 0.15} />
+            <ProcessStep key={step.number} step={step} delay={i * 0.15} isInView={isInView} />
           ))}
         </div>
 
         {/* Mobile: Vertical layout */}
         <div className="md:hidden space-y-8">
           {steps.map((step, i) => (
-            <ProcessStep key={step.number} step={step} delay={i * 0.15} />
+            <ProcessStep key={step.number} step={step} delay={i * 0.15} isInView={isInView} />
           ))}
         </div>
       </div>
@@ -630,12 +630,11 @@ function ProcessSection() {
   );
 }
 
-function ProcessStep({ step, delay }: any) {
+function ProcessStep({ step, delay, isInView }: any) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
       transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="flex-1 relative"
     >
@@ -653,13 +652,15 @@ function ProcessStep({ step, delay }: any) {
 }
 
 function AboutSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+
   return (
-    <section className="py-6 md:py-10 px-6 md:px-20" id="about">
+    <section ref={ref} className="py-6 md:py-10 px-6 md:px-20" id="about">
       <div className="max-w-[1280px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <SectionLabel number="06" title="À Propos" />
@@ -669,8 +670,7 @@ function AboutSection() {
           {/* Left: Image */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="relative"
           >
@@ -687,8 +687,7 @@ function AboutSection() {
           {/* Right: Content */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="flex flex-col justify-center"
           >
@@ -752,12 +751,14 @@ function AboutSection() {
 }
 
 function ContactCTA() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+
   return (
-    <section className="bg-[#161616] border-t border-[#2A2A2A] py-6 md:py-10 px-6 md:px-20" id="contact">
+    <section ref={ref} className="bg-[#161616] border-t border-[#2A2A2A] py-6 md:py-10 px-6 md:px-20" id="contact">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
         transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="max-w-[680px] mx-auto text-center"
       >
