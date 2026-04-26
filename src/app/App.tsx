@@ -411,13 +411,13 @@ function ServiceCard({ service, delay, isInView }: any) {
       transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="bg-[#161616] border border-[#2A2A2A] hover:border-[#3A3A3A] rounded-lg p-8 relative transition-all duration-300 group"
+      className="bg-[#161616] border border-[#2A2A2A] hover:border-[#3A3A3A] rounded-lg p-8 relative transition-all duration-300 group overflow-hidden"
     >
-      <div className="absolute top-8 right-8 font-['Syne'] font-[800] text-[56px] text-[#C49A3C] opacity-30">
+      <div className="absolute top-4 right-4 font-['DM_Mono'] font-[500] text-[48px] text-[#C49A3C] opacity-30 leading-none">
         {service.number}
       </div>
 
-      <h3 className="font-['Syne'] font-[700] text-[22px] mb-4 relative z-10">
+      <h3 className="font-['Syne'] font-[700] text-[22px] mb-4 relative z-10 mt-14">
         {service.title}
       </h3>
 
