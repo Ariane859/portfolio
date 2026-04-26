@@ -260,7 +260,7 @@ function StatItem({ number, label }: { number: string; label: string }) {
 
 function StackSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const isInView = useInView(ref, { once: false, margin: '-80px' });
   const skills = {
     frontend: [
       { name: 'React / Next.js', proficiency: 95 },
@@ -357,7 +357,7 @@ function SkillColumn({ title, skills, delay, isInView }: any) {
 
 function ServicesSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const isInView = useInView(ref, { once: false, margin: '-80px' });
   const services = [
     {
       number: '01',
@@ -449,7 +449,7 @@ function ServiceCard({ service, delay, isInView }: any) {
 
 function ProjectsSection({ activeFilter, setActiveFilter }: any) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const isInView = useInView(ref, { once: false, margin: '-80px' });
 
   const filters = ['Tous', 'Frontend', 'Fullstack', 'API'];
 
@@ -573,7 +573,7 @@ function ProjectCard({ project, delay, isInView }: any) {
 
 function ProcessSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const isInView = useInView(ref, { once: false, margin: '-80px' });
 
   const steps = [
     {
@@ -653,7 +653,7 @@ function ProcessStep({ step, delay, isInView }: any) {
 
 function AboutSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const isInView = useInView(ref, { once: false, margin: '-80px' });
 
   return (
     <section ref={ref} className="py-6 md:py-10 px-6 md:px-20" id="about">
@@ -752,7 +752,7 @@ function AboutSection() {
 
 function ContactCTA() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const isInView = useInView(ref, { once: false, margin: '-80px' });
 
   return (
     <section ref={ref} className="bg-[#161616] border-t border-[#2A2A2A] py-6 md:py-10 px-6 md:px-20" id="contact">
