@@ -62,7 +62,7 @@ function Navigation({ scrolled, mobileMenuOpen, setMobileMenuOpen }: any) {
       }`}
       style={{ height: scrolled ? '83px' : '118px', transition: 'height 0.3s ease' }}
     >
-      <div className="max-w-[1280px] mx-auto px-4 md:px-20 h-full flex items-center justify-between">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-20 h-full flex items-center justify-between">
         {/* Logo */}
         <div className="flex flex-col">
           <img src={`${import.meta.env.BASE_URL}Images/logo.svg`} alt="Logo" className="w-auto" style={{ height: scrolled ? '75px' : '108px', transition: 'height 0.3s ease' }} />
@@ -141,7 +141,7 @@ function HeroSection() {
   return (
     <section className="min-h-screen relative flex items-center px-6 md:px-20 pt-[118px]" id="accueil">
       {/* Background decorative text */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 font-['Syne'] font-[800] text-[80px] sm:text-[130px] lg:text-[200px] text-[#151515] select-none pointer-events-none overflow-hidden whitespace-nowrap" style={{ transform: 'translateY(-50%) rotate(-3deg)' }}>
+      <div className="fullstack-bg absolute top-1/2 font-['Syne'] font-[800] text-[80px] sm:text-[130px] lg:text-[200px] text-[#151515] select-none pointer-events-none overflow-hidden whitespace-nowrap" style={{ transform: 'translateY(-50%) rotate(-3deg)' }}>
         FULLSTACK
       </div>
 

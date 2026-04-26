@@ -1,3 +1,16 @@
 @import './fonts.css';
 @import './tailwind.css';
 @import './theme.css';
+
+/* FULLSTACK decorative text: left-aligned on mobile, right on desktop */
+.fullstack-bg {
+  right: 0;
+  left: auto;
+}
+
+@media (max-width: 767px) {
+  .fullstack-bg {
+    left: 1.5rem;
+    right: auto;
+  }
+}
